@@ -1,0 +1,36 @@
+<h2>🔍 Find Worker</h2>
+
+<form method="post">
+    Skill:
+    <select name="skill">
+        <option>ploughing</option>
+        <option>harvesting</option>
+        <option>spraying</option>
+        <option>repair</option>
+    </select><br><br>
+
+    Latitude: <input type="text" name="lat"><br><br>
+    Longitude: <input type="text" name="lon"><br><br>
+
+    <button type="submit">Search</button>
+</form>
+
+<br>
+
+{% if results is not none %}
+    {% if results %}
+        <h3>✅ Workers Found:</h3>
+        {% for w in results %}
+            <div style="border:1px solid black; padding:10px; margin:10px;">
+                Name: {{w.name}} <br>
+                Skill: {{w.skill}} <br>
+                Village: {{w.village}}
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No workers found 😢</p>
+    {% endif %}
+{% endif %}
+
+<br>
+<a href="/">⬅ Back</a>
